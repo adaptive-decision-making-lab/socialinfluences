@@ -2,7 +2,7 @@
 # How does social information affect similarity judgments and intertemporal choice?
 
 -   Created on 2022-06-04 by Francine W. Goh (<francinegoh@gmail.com>)
--   Finalized on 2023-08-03
+-   Finalized on 2022-06-04
 
 This repository provides the reproducible research materials for our project that investigates the effects of social information on similarity judgments and intertemporal choice. This includes the following:
 
@@ -15,7 +15,7 @@ This repository provides the reproducible research materials for our project tha
 
 If you use any of these materials, please cite:
 
-Goh, F. W., & Stevens, J. R. (forthcoming). Social influences on similarity judgments and intertemporal choice. _Psychological Reports_. 
+Goh, F. W., & Stevens, J. R. (2022). Social influences on similarity judgments and intertemporal choice. PsyArXiv.
 
 ## Summary
 

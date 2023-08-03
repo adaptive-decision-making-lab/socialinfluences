@@ -1,0 +1,244 @@
+---
+title             : "Supplementary materials: Social influences on similarity judgments and intertemporal choice"
+shorttitle        : "Supplementary materials"
+
+author: 
+  - name          : "Francine W. Goh"
+    affiliation   : "1"
+  - name          : "Jeffrey R. Stevens"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "B83 East Stadium, University of Nebraska-Lincoln, Lincoln, Nebraska, 68588"
+    email         : "jeffrey.r.stevens@gmail.com"
+    
+affiliation:
+  - id            : "1"
+    institution   : "University of Nebraska-Lincoln"
+
+authornote: |
+  Francine W. Goh, \orcidlink{0000-0002-7364-4398} [https://orcid.org/0000-0002-7364-4398](https://orcid.org/0000-0002-7364-4398).
+
+  Jeffrey R. Stevens, \orcidlink{0000-0003-2375-1360} [https://orcid.org/0000-0003-2375-1360](https://orcid.org/0000-0003-2375-1360).
+
+  Department of Psychology, Center for Brain, Biology and Behavior, University of Nebraska-Lincoln, Lincoln, Nebraska, USA.
+
+bibliography      : ["goh_stevens_2022.bib"]
+csl               : "goh_stevens_2022.csl"
+
+floatsintext      : no
+figsintext        : yes
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : no
+mask              : no
+draft             : no
+
+header-includes   : 
+  - \usepackage{orcidlink}
+  - \usepackage[justification=Centering,position=top]{subfig}
+  - \usepackage{caption}
+  - \captionsetup[figure]{font=footnotesize}
+
+documentclass     : "apa6"
+classoption       : "doc"
+output            : papaja::apa6_pdf
+keep_tex: yes
+---
+
+```{r setup, include = FALSE}
+library("here")
+library("papaja")
+library("tidyverse")
+source("goh_stevens_2022_rcode.R")
+```
+
+\renewcommand{\thetable}{S\arabic{table}}
+\setcounter{table}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\setcounter{figure}{0}
+\setcounter{page}{1}
+
+\newpage
+
+<!--(Table S1)-->
+
+```{r}
+demographics_table <- data.frame(Label = c("Women", "Men", "Other", "American Indian/Alaskan Native", "Asian", "Black/African American", "Hispanic", "Latino", "Middle Eastern", "White/European American", "Biracial/Multiracial"),
+                                 "Study 1" = c(gender_1[gender_1$gender == "female", ]$n, 
+                                               gender_1[gender_1$gender == "male", ]$n, 0, 0,
+                                               ethnicity_1[ethnicity_1$ethnicity == "Asian", ]$n,
+                                               ethnicity_1[ethnicity_1$ethnicity == "African-American", ]$n,
+                                               ethnicity_1[ethnicity_1$ethnicity == "Hispanic", ]$n, 0, 0,
+                                               ethnicity_1[ethnicity_1$ethnicity == "White", ]$n,
+                                               ethnicity_1[ethnicity_1$ethnicity == "Other", ]$n),
+                                 "Study 2" = c(gender_2[gender_2$gender == "female", ]$n, 
+                                               gender_2[gender_2$gender == "male", ]$n,
+                                               gender_2[gender_2$gender == "other", ]$n, 0,
+                                               ethnicity_2[ethnicity_2$ethnicity == "Asian", ]$n,
+                                               ethnicity_2[ethnicity_2$ethnicity == "African American/Black", ]$n,
+                                               ethnicity_2[ethnicity_2$ethnicity == "Hispanic", ]$n, 
+                                               ethnicity_2[ethnicity_2$ethnicity == "Latino", ]$n,
+                                               ethnicity_2[ethnicity_2$ethnicity == "Middle Eastern", ]$n,
+                                               ethnicity_2[ethnicity_2$ethnicity == "Caucasian/White", ]$n, 0),
+                                 "Study 3" = c(gender_3[gender_3$gender == "Female", ]$n, 
+                                               gender_3[gender_3$gender == "Male", ]$n,
+                                               gender_3[gender_3$gender == "Unspecified", ]$n, 0,
+                                               ethnicity_3[ethnicity_3$ethnicity == "Asian", ]$n,
+                                               ethnicity_3[ethnicity_3$ethnicity == "African American/Black", ]$n,
+                                               ethnicity_3[ethnicity_3$ethnicity == "Hispanic", ]$n, 0,
+                                               ethnicity_3[ethnicity_3$ethnicity == "Middle Eastern", ]$n,
+                                               ethnicity_3[ethnicity_3$ethnicity == "Caucasian/White", ]$n,
+                                               ethnicity_3[ethnicity_3$ethnicity == "Other", ]$n))
+
+demographics_labels <- c("N", "Mean +/- SD", "N", "Mean +/- SD", "N", "Mean +/- SD")
+
+apa_table(
+  demographics_table,
+  digits = 0,
+  col.names = c("", "Study 1", "Study 2", "Study 3"),
+  caption = "Participant demographic information",
+  note = "Table used with permission under a CC-BY4.0 license: Goh \\& Stevens (2022); available at https://doi.org/10.31234/osf.io/xz68b",
+  escape = FALSE,
+  col_spanners = list(c("Study 1" = 2,
+                        "Study 2" = 3,
+                        "Study 3" = 4)),
+  stub_indents = list("Gender" = 1:3, "Ethnicity" = 4:11),
+  align = "lccc",
+  font_size = "small"
+  )
+```
+
+\clearpage
+
+<!--(Table S2)-->
+
+```{r}
+number_pairs_table <- structure(
+  list(
+    `Small value` = c(
+      "4", "5", "5", "6", "6", "7", "10", "11", "11", "12", "12", "13", "16", "17", "17", "18", "18", "19", "22", "23", "23", "24", "24", "25", "29", "29", "30", "30", "35", "35", "36", "36", "41", "41", "42", "42", "47", "47", "48", "48"
+    ),
+    `Large value` = c(
+      "8", "11", "12", "12", "13", "12", "15", "17", "18", "18", "19", "18", "21", "23", "24", "24", "25", "24", "27", "29", "30", "30", "31", "30", "35", "36", "36", "37", "41", "42", "42", "43", "47", "48", "48", "49", "53", "54", "54", "55"
+    )
+  ),
+  class = "data.frame",
+  row.names = c(NA, 40L)
+)
+
+apa_table(
+  number_pairs_table,
+  caption = "Number pairs for amount and delay similarity judgments for study 1",
+  note = "Table used with permission under a CC-BY4.0 license: Goh \\& Stevens (2022); available at https://doi.org/10.31234/osf.io/xz68b",
+  escape = FALSE,
+  align = "cc",
+  font_size = "small"
+  )
+```
+
+\clearpage
+
+<!--(Table S3)-->
+
+```{r}
+itc_questions_table <- structure(
+  list(
+    `Small amount` = c(
+      "4", "4", "4", "4", "5", "5", "6", "6", "7", "7", "7", "7", "10", "10", "10", "10", "11", "11", "12", "12", "13", "13", "13", "13", "16", "16", "16", "16", "17", "17", "18", "18", "19", "19", "19", "19", "22", "22", "22", "22", "23", "23", "24", "24", "25", "25", "25", "25", "29", "29", "30", "30", "35", "35", "36", "36", "41", "41", "42", "42", "47", "47", "48", "48"
+      ),
+    `Large amount` = c(
+      "8", "8", "8", "8", "11", "12", "12", "13", "12", "12", "12", "12", "15", "15", "15", "15", "17", "18", "18", "19", "18", "18", "18", "18", "21", "21", "21", "21", "23", "24", "24", "25", "24", "24", "24", "24", "27", "27", "27", "27", "29", "30", "30", "31", "30", "30", "30", "30", "35", "36", "36", "37", "41", "42", "42", "43", "47", "48", "48", "49", "53", "54", "54", "55"
+    ),
+    `Short delay` = c(
+      "17", "17", "18", "18", "10", "10", "10", "10", "47", "47", "48", "48", "23", "23", "24", "24", "4", "4", "4", "4", "29", "29", "30", "30", "5", "5", "6", "6", "7", "7", "7", "7", "11", "11", "12", "12", "41", "41", "42", "42", "13", "13", "13", "13", "35", "35", "36", "36", "25", "25", "25", "25", "16", "16", "16", "16", "19", "19", "19", "19", "22", "22", "22", "22"
+      ),
+    `Long delay` = c(
+      "23", "24", "24", "25", "15", "15", "15", "15", "53", "54", "54", "55", "29", "30", "30", "31", "8", "8", "8", "8", "35", "36", "36", "37", "11", "12", "12", "13", "12", "12", "12", "12", "17", "18", "18", "19", "47", "48", "48", "49", "18", "18", "18", "18", "41", "42", "42", "43", "30", "30", "30", "30", "21", "21", "21", "21", "24", "24", "24", "24", "27", "27", "27", "27"
+      )
+  ),
+  class = "data.frame",
+  row.names = c(NA, 64L)
+)
+
+apa_table(
+  itc_questions_table,
+  caption = "Intertemporal choice questions for study 1",
+  note = "Table used with permission under a CC-BY4.0 license: Goh \\& Stevens (2022); available at https://doi.org/10.31234/osf.io/xz68b",
+  escape = FALSE,
+  align = "cccc",
+  font_size = "small",
+  longtable = TRUE
+  )
+```
+
+\clearpage
+
+<!--(Table S4)-->
+
+```{r}
+bayes_interpret_table <- structure(
+  list(
+    `Bayes factor` = c(
+      "> 100", "30 - 100", "10 - 30", "3 - 10", "1 - 3", "1/3 - 1", "1/10 - 1/3", "1/30 - 1/10", "1/100 - 1/30", "< 1/100"
+    ),
+    Interpretation = c(
+      "Extreme evidence for H$_{1}$", "Very strong evidence for H$_{1}$", "Strong evidence for H$_{1}$", "Moderate evidence for H$_{1}$", "Anecdotal evidence for H$_{1}$", "Anecdotal evidence for H$_{0}$", "Moderate evidence for H$_{0}$", "Strong evidence for H$_{0}$", "Very strong evidence for H$_{0}$",  "Extreme evidence for H$_{0}$"
+    )
+  ),
+  class = "data.frame",
+  row.names = c(NA, 10L)
+)
+
+apa_table(
+  bayes_interpret_table,
+  caption = "Bayes factor interpretations according to Wagenmakers et al. (2018)",
+  note = "Table used with permission under a CC-BY4.0 license: Goh \\& Stevens (2022); available at https://doi.org/10.31234/osf.io/xz68b",
+  align = "ll",
+  escape = FALSE
+  )
+```
+
+\clearpage
+
+<!--(Figure S1)-->
+(ref:suggestibility1-fig-cap) Proportion of participant choices for the larger, later option for the (a) amount-focused and (b) delay-focused social information conditions for study 1. The left panels represent participant choices for the larger, later option for non-social compared to social intertemporal choice questions for those in the high suggestibility group while the right panels represent the comparison of these choices for participants in the low suggestibility group. Dots and error bars represent mean values and 95% within-subject confidence intervals respectively. For boxplots, horizontal bars represent medians, boxes represent interquartile ranges (25^th^ - 75^th^ percentile), and whiskers represent 1.5 times the interquartile range. Figure used with permission under a CC-BY4.0 license: Goh & Stevens (2022); available at https://doi.org/10.31234/osf.io/xz68b
+
+```{r suggestibility1, out.width = "100%", fig.align="center", fig.cap = "(ref:suggestibility1-fig-cap)"}
+knitr::include_graphics(path = here("figures/suggestibility_itc_1.png"))
+```
+
+<!--(Figure S2)-->
+(ref:numeracyjudgments1-fig-cap) Proportion of number pairs judged similar by participants according to (a) objective numeracy scores and (b) subjective numeracy levels for study 1. The left panels represent judgments in the amount similarity judgment task and the right panels represent judgments in the delay similarity judgment task. Dots and error bars represent mean values and 95% within-subject confidence intervals respectively. For boxplots, horizontal bars represent medians, boxes represent interquartile ranges (25^th^ - 75^th^ percentile), and whiskers represent 1.5 times the interquartile range. Figure used with permission under a CC-BY4.0 license: Goh & Stevens (2022); available at https://doi.org/10.31234/osf.io/xz68b
+
+```{r numeracyjudgments1, out.width = "100%", fig.cap = "(ref:numeracyjudgments1-fig-cap)"}
+knitr::include_graphics(path = here("figures/numeracy_judgments_1.png"))
+```
+
+<!--(Figure S3)-->
+(ref:numeracyitc1-fig-cap) Proportion of larger, later options chosen in non-social intertemporal choice questions by participants according to (a) objective numeracy scores and (b) subjective numeracy levels for study 1. For boxplots, horizontal bars represent medians, boxes represent interquartile ranges (25^th^ - 75^th^ percentile), and whiskers represent 1.5 times the interquartile range. Figure used with permission under a CC-BY4.0 license: Goh & Stevens (2022); available at https://doi.org/10.31234/osf.io/xz68b
+
+```{r numeracyitc1, out.width = "100%", fig.cap = "(ref:numeracyitc1-fig-cap)"}
+knitr::include_graphics(path = here("figures/numeracy_itc_1.png"))
+```
+
+<!--(Figure S4)-->
+(ref:suggestibility2-fig-cap) Proportion of participant choices for the larger, later option for the (a) amount-focused and (b) delay-focused social information conditions for study 2. The left panels represent participant choices for the larger, later option for non-social compared to social intertemporal choice questions for those in the high suggestibility group while the right panels represent the comparison of these choices for participants in the low suggestibility group. Dots and error bars represent mean values and 95% within-subject confidence intervals respectively. For boxplots, horizontal bars represent medians, boxes represent interquartile ranges (25^th^ - 75^th^ percentile), and whiskers represent 1.5 times the interquartile range. Figure used with permission under a CC-BY4.0 license: Goh & Stevens (2022); available at https://doi.org/10.31234/osf.io/xz68b
+
+```{r suggestibility2, out.width = "100%", fig.align="center", fig.cap = "(ref:suggestibility2-fig-cap)"}
+knitr::include_graphics(path = here("figures/suggestibility_itc_2.png"))
+```
+
+<!--(Figure S5)-->
+(ref:numeracyjudgments2-fig-cap) Proportion of number pairs judged similar by participants according to (a) objective numeracy scores and (b) subjective numeracy levels for study 2. The left panels represent judgments in the amount similarity judgment task and the right panels represent judgments in the delay similarity judgment task. Dots and error bars represent mean values and 95% within-subject confidence intervals respectively. For boxplots, horizontal bars represent medians, boxes represent interquartile ranges (25^th^ - 75^th^ percentile), and whiskers represent 1.5 times the interquartile range. Figure used with permission under a CC-BY4.0 license: Goh & Stevens (2022); available at https://doi.org/10.31234/osf.io/xz68b
+
+```{r numeracyjudgments2, out.width = "100%", fig.cap = "(ref:numeracyjudgments2-fig-cap)"}
+knitr::include_graphics(path = here("figures/numeracy_judgments_2.png"))
+```
+
+<!--(Figure S6)-->
+(ref:numeracyitc2-fig-cap) Proportion of larger, later options chosen in non-social intertemporal choice questions by participants according to (a) objective numeracy scores and (b) subjective numeracy levels for study 2. For boxplots, horizontal bars represent medians, boxes represent interquartile ranges (25^th^ - 75^th^ percentile), and whiskers represent 1.5 times the interquartile range. Figure used with permission under a CC-BY4.0 license: Goh & Stevens (2022); available at https://doi.org/10.31234/osf.io/xz68b
+
+```{r numeracyitc2, out.width = "100%", fig.cap = "(ref:numeracyitc2-fig-cap)"}
+knitr::include_graphics(path = here("figures/numeracy_itc_2.png"))
+```
